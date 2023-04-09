@@ -1,14 +1,10 @@
-
-console.group("Cargando los resultados...");
 //  1.- Create an array of n unique numbers, from 0 to N - 1, where N is the length of the array.
 //  i: 5
 //  o: [0, 1, 2, 3, 4]
-const crearCajaInicial = (n: number): number[] => {
-  return Array.from({ length: n }, (_, x) => x);
-}
 
-const miCajaPrimera: number[] = crearCajaInicial(5);
-console.log(miCajaPrimera);
+const n: number = 5;
+const array: number[] = Array.from({ length: n }, (_, x) => x);
+console.log(array); 
 
 
 
@@ -16,14 +12,12 @@ console.log(miCajaPrimera);
 //  then save it in a new variable and sort it.
 // i: [0,1,2,3,4]
 // o: [-3,-1,0,2,4]
-const crearCajaSecundaria = (ca: number[]): number[] => {
-  const altMat = ca.map((num: number, y: number) => (y % 2 === 0 ? num : -num));
-  return altMat.sort((a: number, b: number ) => a - b);
-}
 
-const cajaAbierta: number[] = miCajaPrimera;
-const resFinal: number[] = crearCajaSecundaria(cajaAbierta);
-console.log(resFinal);
+const altArray = array
+  .map((numero: number, y: number) => (y % 2 === 0 ? numero : -numero))
+  .sort((a: number, b: number ) => a - b);
+console.log(altArray)
+
 
 // Consider the following code:
 
@@ -59,45 +53,30 @@ var CUSTOMERS = [
 // EXTRA 2 : optimize this function to be able to memorize the results of previous calls.
 // i: getBalance('John')
 // o: 125
-type Customer = {
-  customer: string;
-  balance: number;
-  id: string;
-}
 
 
 const obtener_saldo = (() => {
-  const cache = new Map<string, number>();
-  
-  return (name: string): string => {
-    if (cache.has(name)) {
-      return cache.get(name)!.toString();
-    }
-
-    const customer = CUSTOMERS.find((c) => c.customer === name);
-    if (customer) {
-      cache.set(name, customer.balance);
-      return customer.balance.toString();
-    } else {
-      return "cliente no encontrado";
+const cache = new Map<string, number>();
+     return (nombre: string): string => {
+      if (cache.has(nombre)) {
+      return cache.get(nombre)!.toString();
+      }
+      const cliente = CUSTOMERS.find((c) => c.customer === nombre);
+       if (cliente) {
+       cache.set(nombre, cliente.balance);
+       return cliente.balance.toString();
+       } else {
+       return "cliente no encontrado";
     }
   };
 })();
 
 console.log(obtener_saldo("John")); 
-console.log(obtener_saldo("Juan")); 
-console.log(obtener_saldo("John") + " cache"); 
-console.log(obtener_saldo("Jim")); 
-console.log(obtener_saldo("Jack"));
 
 
-
-//var z = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-//var r = Math.ceil(Math.random() * 10);
+var z: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var r: number = Math.floor(Math.random() * z.length);
 //  do you find any problem with this code? if so, what is the possible solution to prevent it?
+console.log(r);
 
-const zeta: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const erre: number = Math.floor(Math.random() * zeta.length);
-console.log(`El elemento aleatorio de la matriz zeta es: ${zeta[erre]}`);
 
-console.log("Fin de los resultados...")
