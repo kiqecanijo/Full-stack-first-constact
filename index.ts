@@ -22,7 +22,7 @@ console.log(altArray)
 // Consider the following code:
 
 
-var CUSTOMERS = [
+const CUSTOMERS = [
   {
     customer: "John",
     balance: 125,
