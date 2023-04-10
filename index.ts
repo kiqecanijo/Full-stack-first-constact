@@ -2,8 +2,8 @@
 //  i: 5
 //  o: [0, 1, 2, 3, 4]
 
-const n: number = 5;
-const array: number[] = Array.from({ length: n }, (_, x) => x);
+const n = 5;
+const array = Array.from({ length: n }, (_, x) => x);
 console.log(array); 
 
 
@@ -14,8 +14,8 @@ console.log(array);
 // o: [-3,-1,0,2,4]
 
 const altArray = array
-  .map((numero: number, y: number) => (y % 2 === 0 ? numero : -numero))
-  .sort((a: number, b: number ) => a - b);
+  .map((numero, y) => (y % 2 === 0 ? numero : -numero))
+  .sort((a, b ) => a - b);
 console.log(altArray)
 
 
@@ -43,7 +43,7 @@ const CUSTOMERS = [
     balance: 200,
     id: "0x0004",
   },
-];
+] as const;
 
 
 
@@ -74,9 +74,12 @@ const cache = new Map<string, number>();
 console.log(obtener_saldo("John")); 
 
 
-var z: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-var r: number = Math.floor(Math.random() * z.length);
+const z = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as const;
+const r  = Math.ceil(Math.random() * 10) as 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 ;
+
+
 //  do you find any problem with this code? if so, what is the possible solution to prevent it?
-console.log(r);
+
+z[r]
 
 
